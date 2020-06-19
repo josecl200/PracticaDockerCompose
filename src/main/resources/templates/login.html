@@ -17,7 +17,7 @@
 						<div class="inner">
 
 							<!-- Logo -->
-							<a href="index.html" class="logo">
+							<a href="/" class="logo">
 								<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Arrendos</span>
 							</a>
 
@@ -39,17 +39,17 @@
 						<div class="inner">
 							<header>
 								<h1 th:text="${mensaje}">Session</h1>
-								<p th:text="'Etiam et nullam dolore.: '+${mensaje2}">...</p>
+								<p th:if="${error}!=null" th:text="'Error: '+${error}">...</p>
 							</header>
 							<section>
 								<h2>Iniciar sesion</h2>
-								<form method="post" action="#">
+								<form method="post" modelAttribute="userForm" class="form-signin" action="/login">
 									<div class="fields">
 										<div class="field top">
-											<input type="text" name="user" id="user" placeholder="Usuario" />
+											<input type="text" name="username" id="username" placeholder="Usuario" />
 										</div>
 										<div class="field bottom">
-											<input type="password" name="pass" id="pass" placeholder="Contrasena" />
+											<input type="password" name="password" id="password" placeholder="Contrasena" />
 										</div>
 									</div>
 									<ul class="actions">
