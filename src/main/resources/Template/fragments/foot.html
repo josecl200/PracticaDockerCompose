@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title th:text="${titulo}">UserNiu</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+						</div>
+					</header>
+
+				<!-- Footer -->
+					<footer id="footer" th:fragment="footer">
+							<div class="inner">
+								<section>
+									<h2 th:text="${ping}">Contacto</h2>
+									<ul class="icons">
+										<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+										<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>
+										<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+										<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+									</ul>
+								</section>
+								<ul class="copyright">
+									<li> Copyright &copy; JJ-El Avionsito 2020. All rights reserved.</li>
+								</ul>
+							</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="asscets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

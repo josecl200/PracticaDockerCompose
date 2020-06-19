@@ -1,0 +1,323 @@
+<!DOCTYPE HTML>
+<!--
+<p th:text="'El Estudiante matricula: '+${matricula}">...</p>
+<#if usuario??>
+            <#else>
+            </#if>
+-->
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title th:text="${titulo}">Encore</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+<!-- Wrapper -->
+<div id="wrapper">
+
+	<!-- Header -->
+	<header id="header">
+		<div class="inner">
+
+			<!-- Logo -->
+			<a href="index.html" class="logo">
+				<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Arrendos</span>
+			</a>
+
+			<!-- Nav -->
+			<nav>
+				<ul>
+					<li><a href="#menu">Menu</a></li>
+				</ul>
+			</nav>
+
+		</div>
+	</header>
+
+	<!-- Menu -->
+	<nav id="menu">
+		<h2>Menu</h2>
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="login.html">Iniciar sesion</a></li>
+			<li><a href="Regex.html">Registrar usuarios</a></li>
+			<li><a href="generic.html">manejar inventario</a></li>
+			<li><a href="index.html">Salir</a></li>
+		</ul>
+	</nav>
+
+	<!-- Main -->
+	<div id="main">
+		<div class="inner">
+			<header>
+				<h1 th:text="${mensaje}">Encuesta</h1>
+				<p th:text="'Etiam et nullam dolore.: '+${mensaje2}">Resultados</p>
+
+
+			</header>
+
+			<section>
+				<!-- Charts Start-->
+				<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+				<script type="text/javascript">
+					google.charts.load('current', {'packages':['corechart']});
+					google.charts.setOnLoadCallback(drawChart);
+
+					function drawChart() {
+
+						var data = google.visualization.arrayToDataTable([
+							['expectativas', 'cumplidas']
+						]);
+						var options = {
+							title: 'Expextativas cumplidas',
+							pieHole: 0.3
+						};
+						var chart = new google.visualization.PieChart(document.getElementById('navChart'));
+						chart.draw(data, options);
+					}
+				</script>
+				<script type="text/javascript">
+					google.charts.load('current', {'packages':['corechart']});
+					google.charts.setOnLoadCallback(drawChart);
+
+					function drawChart() {
+
+						var data = google.visualization.arrayToDataTable([
+							['Expositores', 'Expertos']
+						]);
+						var options = {
+							title: 'tasa de expertos',
+							pieHole:0.3
+						};
+						var chart = new google.visualization.PieChart(document.getElementById('osChart'));
+						chart.draw(data, options);
+					}
+				</script>
+				<script>
+					google.charts.load('current', {packages: ['corechart', 'bar']});
+					google.charts.setOnLoadCallback(drawBasic);
+
+					function drawBasic() {
+
+						var data = new google.visualization.DataTable();
+						data.addColumn('timeofday', 'Hora');
+						data.addColumn('number', 'Clicks');
+
+						data.addRows([
+								<#list actPorHora?keys as act>
+								[{v: [${act}, 0, 0], f: '${act} am'}, ${actPorHora[act]}]<#if act_has_next>,</#if>
+						</#list>
+					]);
+
+						var options = {
+							title: 'Horas más activas',
+							hAxis: {
+								title: 'Hora',
+								format: 'h:mm a',
+								viewWindow: {
+									min: [0, 00, 0],
+									max: [23, 00, 0]
+								}
+							},
+							vAxis: {
+								title: 'Clicks'
+							}
+						};
+
+						var chart = new google.visualization.ColumnChart(
+								document.getElementById('chart_div'));
+
+						chart.draw(data, options);
+					}
+				</script>
+
+				<div class="row">
+					<!-- Area Chart -->
+					<div class="col-xl-8 col-lg-10">
+						<div class="card shadow mb-4">
+							<!-- Card Header - Dropdown -->
+							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+								<h6 class="m-0 font-weight-bold text-primary">Porcentaje de expectativas</h6>
+							</div>
+							<!-- Card Body -->
+							<div class="card-body">
+								<div id="chart_div"></div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+
+				<div class="row">
+					<!-- Pie Chart -->
+					<div class="col-xl-4 col-lg-5">
+						<div class="card shadow mb-4">
+							<!-- Card Header - Dropdown -->
+							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+								<h6 class="m-0 font-weight-bold text-primary">Porcentaje de expertos</h6>
+							</div>
+							<!-- Card Body -->
+							<div class="card-body">
+								<div id="navChart"></div>
+							</div>
+						</div>
+					</div>
+					<!-- Pie Chart -->
+					<div class="col-xl-4 col-lg-5">
+						<div class="card shadow mb-4">
+							<!-- Card Header - Dropdown -->
+							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+								<h6 class="m-0 font-weight-bold text-primary">Porcentaje confort</h6>
+							</div>
+							<!-- Card Body -->
+							<div class="card-body">
+								<div id="osChart"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Charts end-->
+
+			</section>
+
+			<section>
+						<h1 th:text="${mensaje}">Como evaluaria esta entrega del Barcamp?</h1>
+						<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
+
+				<form method="post" action="#">
+					<div class="row gtr-uniform">
+
+
+						<div class="col-12">
+							<p>¿Las charlas donde usted participó cumplieron con sus expectativas?</p>
+						</div>
+						<div class="col-2 col-12-small">
+							<input type="radio" id="1" name="expectativas">
+							<label for="1">Muy en desacuerdo</label>
+						</div>
+						<div class="col-2 col-12-small">
+							<input type="radio" id="2" name="expectativas">
+							<label for="2">Desacuerdo</label>
+						</div>
+						<div class="col-2 col-12-small">
+							<input type="radio" id="3" name="expectativas">
+							<label for="3">Neutral</label>
+						</div>
+						<div class="col-2 col-12-small">
+							<input type="radio" id="4" name="expectativas">
+							<label for="4">De acuerdo</label>
+						</div>
+						<div class="col-2 col-12-small">
+							<input type="radio" id="5" name="expectativas">
+							<label for="5">Muy de acuerdo</label>
+						</div>
+
+						<div class="col-12">
+							<p>¿Los expositores mostraron tener dominio del tema?</p>
+						</div>
+						<div class="col-2 col-12-small">
+							<input type="radio" id="1" name="dominio">
+							<label for="1">Muy en desacuerdo</label>
+						</div>
+						<div class="col-2 col-12-small">
+							<input type="radio" id="2" name="dominio">
+							<label for="2">Desacuerdo</label>
+						</div>
+						<div class="col-2 col-12-small">
+							<input type="radio" id="3" name="dominio">
+							<label for="3">Neutral</label>
+						</div>
+						<div class="col-2 col-12-small">
+							<input type="radio" id="4" name="dominio">
+							<label for="4">De acuerdo</label>
+						</div>
+						<div class="col-2 col-12-small">
+							<input type="radio" id="5" name="dominio">
+							<label for="5">Muy de acuerdo</label>
+						</div>
+
+						<div class="col-12">
+							<p>¿Las instalaciones del evento fueron confortables para usted?</p>
+						</div>
+						<div class="col-2 col-12-small">
+							<input type="radio" id="1" name="confortables">
+							<label for="1">Muy en desacuerdo</label>
+						</div>
+						<div class="col-2 col-12-small">
+							<input type="radio" id="2" name="confortables">
+							<label for="2">Desacuerdo</label>
+						</div>
+						<div class="col-2 col-12-small">
+							<input type="radio" id="3" name="confortables">
+							<label for="3">Neutral</label>
+						</div>
+						<div class="col-2 col-12-small">
+							<input type="radio" id="4" name="confortables">
+							<label for="4">De acuerdo</label>
+						</div>
+						<div class="col-2 col-12-small">
+							<input type="radio" id="5" name="confortables">
+							<label for="5">Muy de acuerdo</label>
+						</div>
+
+						<div class="col-12">
+							<p>¿Tiene algún comentario para los organizadores?</p>
+						</div>
+						<div class="col-12">
+							<textarea name="comentario" id="dcomentario" placeholder="Introduzca su comentario" rows="6"></textarea>
+						</div>
+
+
+						<!--Enviar -->
+						<div class="col-6 col-12-small">
+							<input type="checkbox" id="demo-human" name="demo-human" required>
+							<label for="demo-human">No soy bot</label>
+						</div>
+
+						<div class="col-12">
+							<ul class="actions">
+								<li><input type="submit" value="Enviar" class="primary" /></li>
+							</ul>
+						</div>
+					</div>
+				</form>
+
+			</section>
+
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<section>
+				<h2 th:text="${ping}">Contacto</h2>
+				<ul class="icons">
+					<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+					<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>
+					<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+					<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+			</section>
+			<ul class="copyright">
+				<li> Copyright &copy; JJ-El Avionsito 2020. All rights reserved.</li>
+			</ul>
+		</div>
+	</footer>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
