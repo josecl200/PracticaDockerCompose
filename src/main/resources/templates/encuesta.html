@@ -1,10 +1,4 @@
 <!DOCTYPE HTML>
-<!--
-<p th:text="'El Estudiante matricula: '+${matricula}">...</p>
-<#if usuario??>
-            <#else>
-            </#if>
--->
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
@@ -16,6 +10,13 @@
 	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
 	<!--Addonis-->
+	<link rel="stylesheet" href="https://code.highcharts.com/css/highcharts.css" />
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 	<!--Addonis-->
 
 </head>
@@ -67,7 +68,13 @@
 
 
 				<!-- Charts Start-->
-				
+
+				<a th:hreaf="@{/DispBar1}">Barras</a><br /><br />
+				<!-- Charts Start
+				<a th:hreaf="@{/DispBar2}">Barras2</a><br /><br />
+				<a th:hreaf="@{/DispBar3}">Barras3</a>-->
+
+
 				<!-- Charts end-->
 
 			</section>
