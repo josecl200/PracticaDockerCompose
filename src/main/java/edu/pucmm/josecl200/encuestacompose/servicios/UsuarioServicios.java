@@ -27,7 +27,7 @@ public class UsuarioServicios implements UserDetailsService {
         Role rolAdmin = new Role("ROLE_ADMIN");
         roleRepo.save(rolAdmin);
         Role rolCliente = new Role("ROLE_CLIENT");
-        roleRepo.save(rolAdmin);
+        roleRepo.save(rolCliente);
         Usuario admin = new Usuario();
         admin.setUsername("root");
         admin.setPassword(bCryptPasswordEncoder.encode("toor"));
@@ -36,13 +36,10 @@ public class UsuarioServicios implements UserDetailsService {
     }
 
     public void registrarUsuario(Usuario usuario){
-        usuario.setPassword(bCryptPasswordEncoder.encode(usuario.getPassword()));
-        usuario.setRoles(new HashSet<>(Arrays.asList(new Role[]{roleRepo.getOne("ROLE_CLIENT")})));
+        String rawPass=usuario.getPassword();
+        usuario.setPassword(bCryptPasswordEncoder.encode(rawPass));
+        usuario.setRoles(new HashSet<>(Arrays.asList(new Role[]{roleRepo.findById("ROLE_CLIENT").get()})));
         usuarioRepo.save(usuario);
-    }
-
-    public void crearNuevoUsuario(Usuario user){
-        usuarioRepo.save(user);
     }
 
     @Override

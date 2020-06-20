@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  encuestacompose:
+    image: josecl200/encuestacompose
+    ports:
+      - "8080:80"
+    networks:
+      - encuesta
+    depends_on:
+      - mysqldb
+    environment:
+      - spring.datasource.url=jdbc:mysql://mysqldb:3306/dbencuesta
+
+  mysqldb:
+    image: library/mysql:latest
+    networks:
+      - encuesta
+    ports:
+      - "33006:3306"
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=dbencuesta
+    volumes:   #volumen de datos utilizado.
+      - ~/dato_mysql_compose:/var/lib/mysql
+networks:
+  encuesta:
