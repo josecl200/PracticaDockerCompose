@@ -12,7 +12,5 @@ public class EncuestacomposeApplication {
         ApplicationContext applicationContext = SpringApplication.run(EncuestacomposeApplication.class, args);
         UsuarioServicios usuarioServicios = (UsuarioServicios) applicationContext.getBean("usuarioServicios");
         usuarioServicios.crearUsuarioAdmin();
-
     }
-
 }

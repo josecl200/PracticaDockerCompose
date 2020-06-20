@@ -35,6 +35,12 @@ public class UsuarioServicios implements UserDetailsService {
         usuarioRepo.save(admin);
     }
 
+    public void registrarUsuario(Usuario usuario){
+        usuario.setPassword(bCryptPasswordEncoder.encode(usuario.getPassword()));
+        usuario.setRoles(new HashSet<>(Arrays.asList(new Role[]{roleRepo.getOne("ROLE_CLIENT")})));
+        usuarioRepo.save(usuario);
+    }
+
     public void crearNuevoUsuario(Usuario user){
         usuarioRepo.save(user);
     }

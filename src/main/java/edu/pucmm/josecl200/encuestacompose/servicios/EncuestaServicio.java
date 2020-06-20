@@ -1,6 +1,7 @@
 package edu.pucmm.josecl200.encuestacompose.servicios;
 
 import edu.pucmm.josecl200.encuestacompose.entidades.RespuestasEncuesta;
+import edu.pucmm.josecl200.encuestacompose.entidades.Usuario;
 import edu.pucmm.josecl200.encuestacompose.repositorios.EncuestaRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,15 @@ import java.util.List;
 public class EncuestaServicio {
     @Autowired
     private EncuestaRepo encuestaRepo;
+    public boolean alreadyFilled(Usuario usuario){
+        if(encuestaRepo.findAllByUsuario(usuario).size()>0)
+            return true;
+        return false;
+    }
+
+    public void saveEncuesta(RespuestasEncuesta encuesta){
+       encuestaRepo.save(encuesta);
+    }
 
     public Double[] promedios(){
         Double[] medias=new Double[3];
