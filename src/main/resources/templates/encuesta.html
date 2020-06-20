@@ -14,6 +14,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+	<!--Addonis-->
+	<!--Addonis-->
+
 </head>
 <body class="is-preload">
 <!-- Wrapper -->
@@ -61,126 +65,10 @@
 			</header>
 
 			<section>
+
+
 				<!-- Charts Start-->
-				<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-				<script type="text/javascript">
-					google.charts.load('current', {'packages':['corechart']});
-					google.charts.setOnLoadCallback(drawChart);
-
-					function drawChart() {
-
-						var data = google.visualization.arrayToDataTable([
-							['expectativas', 'cumplidas']
-						]);
-						var options = {
-							title: 'Expextativas cumplidas',
-							pieHole: 0.3
-						};
-						var chart = new google.visualization.PieChart(document.getElementById('navChart'));
-						chart.draw(data, options);
-					}
-				</script>
-				<script type="text/javascript">
-					google.charts.load('current', {'packages':['corechart']});
-					google.charts.setOnLoadCallback(drawChart);
-
-					function drawChart() {
-
-						var data = google.visualization.arrayToDataTable([
-							['Expositores', 'Expertos']
-						]);
-						var options = {
-							title: 'tasa de expertos',
-							pieHole:0.3
-						};
-						var chart = new google.visualization.PieChart(document.getElementById('osChart'));
-						chart.draw(data, options);
-					}
-				</script>
-				<script>
-					google.charts.load('current', {packages: ['corechart', 'bar']});
-					google.charts.setOnLoadCallback(drawBasic);
-
-					function drawBasic() {
-
-						var data = new google.visualization.DataTable();
-						data.addColumn('timeofday', 'Hora');
-						data.addColumn('number', 'Clicks');
-
-						data.addRows([
-								<#list actPorHora?keys as act>
-								[{v: [${act}, 0, 0], f: '${act} am'}, ${actPorHora[act]}]<#if act_has_next>,</#if>
-						</#list>
-					]);
-
-						var options = {
-							title: 'Horas más activas',
-							hAxis: {
-								title: 'Hora',
-								format: 'h:mm a',
-								viewWindow: {
-									min: [0, 00, 0],
-									max: [23, 00, 0]
-								}
-							},
-							vAxis: {
-								title: 'Clicks'
-							}
-						};
-
-						var chart = new google.visualization.ColumnChart(
-								document.getElementById('chart_div'));
-
-						chart.draw(data, options);
-					}
-				</script>
-
-				<div class="row">
-					<!-- Area Chart -->
-					<div class="col-xl-8 col-lg-10">
-						<div class="card shadow mb-4">
-							<!-- Card Header - Dropdown -->
-							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-								<h6 class="m-0 font-weight-bold text-primary">Porcentaje de expectativas</h6>
-							</div>
-							<!-- Card Body -->
-							<div class="card-body">
-								<div id="chart_div"></div>
-							</div>
-						</div>
-					</div>
-
-
-				</div>
-
-				<div class="row">
-					<!-- Pie Chart -->
-					<div class="col-xl-4 col-lg-5">
-						<div class="card shadow mb-4">
-							<!-- Card Header - Dropdown -->
-							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-								<h6 class="m-0 font-weight-bold text-primary">Porcentaje de expertos</h6>
-							</div>
-							<!-- Card Body -->
-							<div class="card-body">
-								<div id="navChart"></div>
-							</div>
-						</div>
-					</div>
-					<!-- Pie Chart -->
-					<div class="col-xl-4 col-lg-5">
-						<div class="card shadow mb-4">
-							<!-- Card Header - Dropdown -->
-							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-								<h6 class="m-0 font-weight-bold text-primary">Porcentaje confort</h6>
-							</div>
-							<!-- Card Body -->
-							<div class="card-body">
-								<div id="osChart"></div>
-							</div>
-						</div>
-					</div>
-				</div>
+				
 				<!-- Charts end-->
 
 			</section>
@@ -197,72 +85,72 @@
 							<p>¿Las charlas donde usted participó cumplieron con sus expectativas?</p>
 						</div>
 						<div class="col-2 col-12-small">
-							<input type="radio" id="1" name="expectativas">
-							<label for="1">Muy en desacuerdo</label>
+							<input type="radio" id="1a" name="expectativas" value="1">
+							<label for="1a">Muy en desacuerdo</label>
 						</div>
 						<div class="col-2 col-12-small">
-							<input type="radio" id="2" name="expectativas">
-							<label for="2">Desacuerdo</label>
+							<input type="radio" id="2a" name="expectativas" value="2">
+							<label for="2a">Desacuerdo</label>
 						</div>
 						<div class="col-2 col-12-small">
-							<input type="radio" id="3" name="expectativas">
-							<label for="3">Neutral</label>
+							<input type="radio" id="3a" name="expectativas" value="3">
+							<label for="3a">Neutral</label>
 						</div>
 						<div class="col-2 col-12-small">
-							<input type="radio" id="4" name="expectativas">
-							<label for="4">De acuerdo</label>
+							<input type="radio" id="4a" name="expectativas" value="4">
+							<label for="4a">De acuerdo</label>
 						</div>
 						<div class="col-2 col-12-small">
-							<input type="radio" id="5" name="expectativas">
-							<label for="5">Muy de acuerdo</label>
+							<input type="radio" id="5a" name="expectativas" value="5">
+							<label for="5a">Muy de acuerdo</label>
 						</div>
 
 						<div class="col-12">
 							<p>¿Los expositores mostraron tener dominio del tema?</p>
 						</div>
 						<div class="col-2 col-12-small">
-							<input type="radio" id="1" name="dominio">
-							<label for="1">Muy en desacuerdo</label>
+							<input type="radio" id="1b" name="dominio" value="1">
+							<label for="1b">Muy en desacuerdo</label>
 						</div>
 						<div class="col-2 col-12-small">
-							<input type="radio" id="2" name="dominio">
-							<label for="2">Desacuerdo</label>
+							<input type="radio" id="2b" name="dominio" value="2">
+							<label for="2b">Desacuerdo</label>
 						</div>
 						<div class="col-2 col-12-small">
-							<input type="radio" id="3" name="dominio">
-							<label for="3">Neutral</label>
+							<input type="radio" id="3b" name="dominio" value="3">
+							<label for="3b">Neutral</label>
 						</div>
 						<div class="col-2 col-12-small">
-							<input type="radio" id="4" name="dominio">
-							<label for="4">De acuerdo</label>
+							<input type="radio" id="4b" name="dominio" value="4">
+							<label for="4b">De acuerdo</label>
 						</div>
 						<div class="col-2 col-12-small">
-							<input type="radio" id="5" name="dominio">
-							<label for="5">Muy de acuerdo</label>
+							<input type="radio" id="5b" name="dominio" value="5">
+							<label for="5c">Muy de acuerdo</label>
 						</div>
 
 						<div class="col-12">
 							<p>¿Las instalaciones del evento fueron confortables para usted?</p>
 						</div>
 						<div class="col-2 col-12-small">
-							<input type="radio" id="1" name="confortables">
-							<label for="1">Muy en desacuerdo</label>
+							<input type="radio" id="1c" name="confortables" value="1">
+							<label for="1c">Muy en desacuerdo</label>
 						</div>
 						<div class="col-2 col-12-small">
-							<input type="radio" id="2" name="confortables">
-							<label for="2">Desacuerdo</label>
+							<input type="radio" id="2c" name="confortables" value="2">
+							<label for="2c">Desacuerdo</label>
 						</div>
 						<div class="col-2 col-12-small">
-							<input type="radio" id="3" name="confortables">
-							<label for="3">Neutral</label>
+							<input type="radio" id="3c" name="confortables" value="3">
+							<label for="3c">Neutral</label>
 						</div>
 						<div class="col-2 col-12-small">
-							<input type="radio" id="4" name="confortables">
-							<label for="4">De acuerdo</label>
+							<input type="radio" id="4c" name="confortables" value="4">
+							<label for="4c">De acuerdo</label>
 						</div>
 						<div class="col-2 col-12-small">
-							<input type="radio" id="5" name="confortables">
-							<label for="5">Muy de acuerdo</label>
+							<input type="radio" id="5c" name="confortables" value="5">
+							<label for="5c">Muy de acuerdo</label>
 						</div>
 
 						<div class="col-12">
