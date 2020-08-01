@@ -1,4 +1,4 @@
-package edu.pucmm.josecl200.encuestacompose.servicios;
+/*package edu.pucmm.josecl200.encuestacompose.servicios;
 //CanvasjsChartService.java
 
 import java.util.List;
@@ -12,7 +12,6 @@ public interface ChartServi {
 
 
 //CanvasjsChartServiceImpl.java
-    package edu.pucmm.josecl200.encuestacompose.servicios;
 
             import java.util.List;
             import java.util.Map;
@@ -35,4 +34,4 @@ public class CanvasChartServ implements ChartServi {
         return canvasjsChartDao.getCanvasjsChartData();
     }
 
-}
+}*/

@@ -4,7 +4,7 @@ services:
   encuestacompose:
     image: josecl200/encuestacompose
     ports:
-      - "8080:80"
+      - "80:80"
     networks:
       - encuesta
     depends_on:

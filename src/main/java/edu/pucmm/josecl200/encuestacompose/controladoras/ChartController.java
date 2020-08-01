@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.canvasjs.chart.services.CanvasjsChartService;
+//import com.canvasjs.chart.services.CanvasjsChartService;
 import org.thymeleaf.model.IModel;
 
 
@@ -37,7 +37,7 @@ public class ChartController {
 
 
 
-    @Autowired
+    /*@Autowired
     private ChartController canvasjsChartService;
 
     @RequestMapping(method = RequestMethod.GET)
@@ -45,7 +45,7 @@ public class ChartController {
         List<List<Map<Object, Object>>> canvasjsDataList = canvasjsChartService.getCanvasjsChartData();
         modelMap.addAttribute("dataPointsList", canvasjsDataList);
         return "chart";
-    }
+    }*/
 
 }
 
